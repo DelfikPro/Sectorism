@@ -3,6 +3,7 @@ package implario.loader;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -47,8 +48,9 @@ public class Loader extends JavaPlugin {
         }
         for(String pl : plugins)
             try {
-                Bukkit.getPluginManager().enablePlugin(Bukkit.getPluginManager()
-                        .loadPlugin(new File("/Minecraft/_GLOBAL/" + pl + ".jar")));
+                Plugin plugin = Bukkit.getPluginManager().loadPlugin(new File("/Minecraft/_GLOBAL/" + pl + ".jar"));
+                plugin.onLoad();
+                Bukkit.getPluginManager().enablePlugin(plugin);
             }catch (Exception ex){
                 ex.printStackTrace();
                 System.out.println("can't load");
