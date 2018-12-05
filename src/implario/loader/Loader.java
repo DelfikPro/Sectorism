@@ -48,7 +48,7 @@ public class Loader extends JavaPlugin {
         }
         for(String pl : plugins)
             try {
-                Plugin plugin = Bukkit.getPluginManager().loadPlugin(new File("/Minecraft/_GLOBAL/" + pl + ".jar"));
+                Plugin plugin = Bukkit.getPluginManager().loadPlugin(new File("../_GLOBAL/" + pl + ".jar"));
                 plugin.onLoad();
                 Bukkit.getPluginManager().enablePlugin(plugin);
             }catch (Exception ex){
